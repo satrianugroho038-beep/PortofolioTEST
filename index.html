@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satria Developer magang</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+body{background:#000;color:#fff;overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+
+/* OPEN */
+#open{position:fixed;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;}
+#open button{padding:10px 25px;border:1px solid gold;background:none;color:gold;}
+
+/* NAV */
+nav{position:fixed;width:100%;display:flex;justify-content:space-between;padding:15px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:999;}
+.nav-links{display:flex;}
+.nav-links a{margin:10px;color:white;text-decoration:none;}
+.menu-toggle{display:none;font-size:25px;cursor:pointer;}
+
+@media(max-width:768px){
+.menu-toggle{display:block;}
+.nav-links{display:none;flex-direction:column;background:#000;width:100%;position:absolute;top:60px;left:0;text-align:center;}
+.nav-links.active{display:flex;}
+}
+
+/* HERO + PARALLAX */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:url("foto1.jpg") center/cover fixed;
+}
+.hero h1{
+font-size:40px;
+background:linear-gradient(gold,white);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.btn{padding:10px 20px;border:1px solid gold;color:gold;background:none;margin-top:10px;}
+.btn:hover{background:gold;color:black;}
+
+section{padding:80px 10%;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 20px gold;}
+
+.fade-up{opacity:0;transform:translateY(50px);transition:1s;}
+.fade-up.show{opacity:1;transform:translateY(0);}
+
+/* PORTFOLIO */
+.portfolio img{
+width:100%;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+/* TESTIMONI */
+.testi{font-style:italic;}
+.testi strong{color:gold;}
+
+/* PARALLAX SECTION */
+.parallax{
+background:url('https://picsum.photos/1920/1000?blur=2') center/cover fixed;
+text-align:center;
+padding:120px 20px;
+}
+
+/* GAME POPUP */
+#gamePopup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.game-box{
+background:#111;
+padding:20px;
+border-radius:15px;
+text-align:center;
+position:relative;
+}
+
+.close{position:absolute;top:10px;right:15px;cursor:pointer;}
+
+.controls button{padding:10px;margin:5px;font-size:18px;}
+
+canvas{max-width:100%;}
+
+/* CURSOR */
+.cursor{width:15px;height:15px;background:gold;position:fixed;border-radius:50%;pointer-events:none;}
+
+@media(max-width:480px){
+.hero h1{font-size:25px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPEN -->
+<div id="open">
+<h1>Welcome di website developer magang</h1>
+<button onclick="start()">Masuk bro</button>
+</div>
+
+<div class="cursor"></div>
+
+<!-- NAV -->
+<nav>
+<h2>SatriaxWhiskaz</h2>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Portfolio</a>
+<a href="#testimoni">Testimoni</a>
+<a href="#gaming">Gaming</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+<div>
+<h1>Jasa penghancur Website wkwk</h1>
+<p>Modern • Profesional • Trusted</p>
+
+<a href="https://wa.me/6281586827829">
+<button class="btn">Order Sekarang</button>
+</a>
+
+<br><br>
+<button class="btn" onclick="openGame()">🎮 Mainkan Game</button>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="fade-up">
+<h2>About</h2>
+<div class="card">Saya developer magang yang membuat website premium untuk seru-seruan aja.</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="fade-up">
+<h2>Services</h2>
+<div class="grid">
+<div class="card">Website Wedding</div>
+<div class="card">Landing Page</div>
+<div class="card">UI Design</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="fade-up">
+<h2>Skills</h2>
+<div class="grid">
+<div class="card">HTML</div>
+<div class="card">CSS</div>
+<div class="card">JavaScript</div>
+<div class="card">UI/UX</div>
+</div>
+</section>
+
+<!-- PARALLAX -->
+<section class="parallax">
+<h2>Website Anda = Branding Anda 🚀</h2>
+<p>Buat client percaya dalam 5 detik pertama</p>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="projects" class="fade-up">
+<h2>Portfolio</h2>
+<div class="grid portfolio">
+<div class="card">
+<img src="https://picsum.photos/400/300?1">
+Website Wedding Premium
+</div>
+<div class="card">
+<img src="https://picsum.photos/400/300?2">
+Landing Page UMKM
+</div>
+<div class="card">
+<img src="https://picsum.photos/400/300?3">
+Portfolio Developer
+</div>
+</div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni" class="fade-up">
+<h2>Testimoni</h2>
+<div class="grid">
+<div class="card testi">"Webnya keren banget!"<br><strong>- jamal</strong></div>
+<div class="card testi">"Client langsung percaya 🔥"<br><strong>- Budi</strong></div>
+<div class="card testi">"keren bro 🔥"<br><strong>- yanto</strong></div>
+<div class="card testi">"Design premium banget!"<br><strong>- basuki</strong></div>
+</div>
+</section>
+
+<!-- GAMING -->
+<section id="gaming" class="fade-up">
+<h2>Game Saya</h2>
+<div class="grid">
+<div class="card">Roblox</div>
+<div class="card">Mobile Legends</div>
+<div class="card">PUBG</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="fade-up">
+<h2>Pricing</h2>
+<div class="grid">
+<div class="card">Basic - Rp100K</div>
+<div class="card">Premium - Rp300K</div>
+<div class="card">Ultimate - Rp700K</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-up">
+<h2>Order</h2>
+<div class="card">
+<form>
+<input type="text" placeholder="Nama"><br><br>
+<input type="email" placeholder="Email"><br><br>
+<button class="btn">Kirim</button>
+</form>
+</div>
+</section>
+
+<!-- GAME -->
+<div id="gamePopup">
+<div class="game-box">
+
+<span class="close" onclick="closeGame()">✖</span>
+
+<h2>Snake Game 🎮</h2>
+<canvas id="snakeGame" width="300" height="300"></canvas>
+
+<div class="controls">
+<button onclick="setDir('UP')">⬆️</button>
+<div>
+<button onclick="setDir('LEFT')">⬅️</button>
+<button onclick="setDir('RIGHT')">➡️</button>
+</div>
+<button onclick="setDir('DOWN')">⬇️</button>
+</div>
+
+<button class="btn" onclick="startGame()">Start</button>
+<p>Score: <span id="score">0</span></p>
+
+</div>
+</div>
+
+<script>
+// START
+function start(){
+document.getElementById("open").style.display="none";
+}
+
+// MENU
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("active");
+}
+
+// CLOSE MENU HP
+document.querySelectorAll(".nav-links a").forEach(link=>{
+link.addEventListener("click",()=>{
+document.getElementById("navLinks").classList.remove("active");
+});
+});
+
+// SCROLL ANIM
+const el=document.querySelectorAll(".fade-up");
+window.addEventListener("scroll",()=>{
+el.forEach(e=>{
+if(e.getBoundingClientRect().top<window.innerHeight-100){
+e.classList.add("show");
+}
+});
+});
+
+// CURSOR
+document.addEventListener("mousemove",e=>{
+document.querySelector(".cursor").style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
+});
+
+// GAME
+function openGame(){document.getElementById("gamePopup").style.display="flex";}
+function closeGame(){document.getElementById("gamePopup").style.display="none";clearInterval(game);}
+
+let snake,food,dir,score,game;
+const box=15;
+
+function startGame(){
+snake=[{x:150,y:150}];
+food={x:Math.floor(Math.random()*20)*15,y:Math.floor(Math.random()*20)*15};
+dir="RIGHT";score=0;
+document.getElementById("score").innerText=score;
+clearInterval(game);
+game=setInterval(update,120);
+}
+
+function setDir(d){dir=d;}
+
+document.addEventListener("keydown",e=>{
+if(e.key=="ArrowLeft")dir="LEFT";
+if(e.key=="ArrowRight")dir="RIGHT";
+if(e.key=="ArrowUp")dir="UP";
+if(e.key=="ArrowDown")dir="DOWN";
+});
+
+function update(){
+const ctx=document.getElementById("snakeGame").getContext("2d");
+ctx.fillStyle="#111";ctx.fillRect(0,0,300,300);
+
+snake.forEach(s=>{
+ctx.fillStyle="white";
+ctx.fillRect(s.x,s.y,box,box);
+});
+
+ctx.fillStyle="red";
+ctx.fillRect(food.x,food.y,box,box);
+
+let head={...snake[0]};
+if(dir=="LEFT")head.x-=box;
+if(dir=="RIGHT")head.x+=box;
+if(dir=="UP")head.y-=box;
+if(dir=="DOWN")head.y+=box;
+
+if(head.x==food.x && head.y==food.y){
+score++;
+document.getElementById("score").innerText=score;
+food={x:Math.floor(Math.random()*20)*15,y:Math.floor(Math.random()*20)*15};
+}else{snake.pop();}
+
+snake.unshift(head);
+
+if(head.x<0||head.y<0||head.x>=300||head.y>=300){
+clearInterval(game);
+alert("Game Over 😢");
+}
+}
+</script>
+
+</body>
+</html>
