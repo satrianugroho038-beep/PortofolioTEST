@@ -2,86 +2,149 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Satria Developer magang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>Satria Developer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
-body{background:#000;color:#fff;overflow-x:hidden;}
-html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
-/* OPEN */
-#open{position:fixed;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;}
-#open button{padding:10px 25px;border:1px solid gold;background:none;color:gold;}
-
-/* NAV */
-nav{position:fixed;width:100%;display:flex;justify-content:space-between;padding:15px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:999;}
-.nav-links{display:flex;}
-.nav-links a{margin:10px;color:white;text-decoration:none;}
-.menu-toggle{display:none;font-size:25px;cursor:pointer;}
-
-@media(max-width:768px){
-.menu-toggle{display:block;}
-.nav-links{display:none;flex-direction:column;background:#000;width:100%;position:absolute;top:60px;left:0;text-align:center;}
-.nav-links.active{display:flex;}
+html,body{
+width:100%;
+overflow-x:hidden;
+background:#211e2c;
+color:#fff;
+scroll-behavior:smooth;
 }
 
-/* HERO + PARALLAX */
+/* OPEN */
+#open{
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
+}
+#open button{
+padding:10px 25px;
+border:1px solid gold;
+background:none;
+color:gold;
+}
+
+/* NAV */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:15px 20px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+.nav-links{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-size:13px;
+}
+
+.menu-toggle{
+display:none;
+font-size:25px;
+cursor:pointer;
+}
+
+/* HERO */
 .hero{
-height:100vh;
+min-height:100svh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-background:url("foto1.jpg") center/cover fixed;
+padding:100px 20px;
+background:url("foto1.jpg") center/cover no-repeat;
 }
+
 .hero h1{
-font-size:40px;
+font-size:clamp(24px,6vw,40px);
 background:linear-gradient(gold,white);
 -webkit-background-clip:text;
 color:transparent;
 }
 
-.btn{padding:10px 20px;border:1px solid gold;color:gold;background:none;margin-top:10px;}
+/* BUTTON */
+.btn{
+padding:10px 20px;
+border:1px solid gold;
+color:gold;
+background:none;
+margin-top:10px;
+cursor:pointer;
+}
 .btn:hover{background:gold;color:black;}
 
-section{padding:80px 10%;}
+/* SECTION */
+section{
+padding:60px 5%;
+max-width:1200px;
+margin:auto;
+}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:1fr;
+gap:20px;
+}
+@media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr);}}
 
+/* CARD */
 .card{
 background:rgba(255,255,255,0.05);
 padding:20px;
 border-radius:15px;
 backdrop-filter:blur(10px);
 transition:0.3s;
+cursor:pointer;
 }
-.card:hover{transform:translateY(-10px);box-shadow:0 0 20px gold;}
+.card:hover{transform:translateY(-5px);box-shadow:0 0 15px gold;}
 
-.fade-up{opacity:0;transform:translateY(50px);transition:1s;}
+/* ANIM */
+.fade-up{opacity:0;transform:translateY(40px);transition:0.8s;}
 .fade-up.show{opacity:1;transform:translateY(0);}
 
-/* PORTFOLIO */
-.portfolio img{
-width:100%;
-border-radius:10px;
-margin-bottom:10px;
+/* PARALLAX */
+.parallax{
+background:url('https://picsum.photos/1920/1000?blur=2') center/cover no-repeat;
+text-align:center;
+padding:100px 20px;
 }
 
-/* TESTIMONI */
+/* PORTFOLIO */
+.portfolio img{width:100%;border-radius:10px;}
+
+/* TESTI */
 .testi{font-style:italic;}
 .testi strong{color:gold;}
 
-/* PARALLAX SECTION */
-.parallax{
-background:url('https://picsum.photos/1920/1000?blur=2') center/cover fixed;
-text-align:center;
-padding:120px 20px;
-}
-
-/* GAME POPUP */
+/* GAME */
 #gamePopup{
 position:fixed;
 top:0;left:0;
@@ -101,17 +164,49 @@ text-align:center;
 position:relative;
 }
 
-.close{position:absolute;top:10px;right:15px;cursor:pointer;}
+.close{
+position:absolute;
+top:10px;
+right:15px;
+cursor:pointer;
+}
 
-.controls button{padding:10px;margin:5px;font-size:18px;}
+canvas{
+width:100%;
+max-width:300px;
+}
 
-canvas{max-width:100%;}
+/* ROBLOX POPUP */
+#robloxPopup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.95);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
 
-/* CURSOR */
-.cursor{width:15px;height:15px;background:gold;position:fixed;border-radius:50%;pointer-events:none;}
+/* MOBILE */
+@media(max-width:768px){
 
-@media(max-width:480px){
-.hero h1{font-size:25px;}
+.menu-toggle{display:block;}
+
+.nav-links{
+display:none;
+flex-direction:column;
+background:#000;
+position:absolute;
+top:60px;
+left:0;
+width:100%;
+text-align:center;
+}
+
+.nav-links.active{display:flex;}
+
+.parallax{background-attachment:scroll;}
 }
 </style>
 </head>
@@ -120,15 +215,13 @@ canvas{max-width:100%;}
 
 <!-- OPEN -->
 <div id="open">
-<h1>Welcome di website developer magang</h1>
-<button onclick="start()">Masuk bro</button>
+<h1>Welcome Developer 🚀</h1>
+<button onclick="start()">Masuk</button>
 </div>
-
-<div class="cursor"></div>
 
 <!-- NAV -->
 <nav>
-<h2>SatriaxWhiskaz</h2>
+<h2>SatriaX</h2>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <div class="nav-links" id="navLinks">
@@ -147,7 +240,7 @@ canvas{max-width:100%;}
 <!-- HERO -->
 <section id="home" class="hero">
 <div>
-<h1>Jasa penghancur Website wkwk</h1>
+<h1>Jasa Website Premium</h1>
 <p>Modern • Profesional • Trusted</p>
 
 <a href="https://wa.me/6281586827829">
@@ -155,15 +248,14 @@ canvas{max-width:100%;}
 </a>
 
 <br><br>
-<button class="btn" onclick="openGame()">🎮 Mainkan Game</button>
-
+<button class="btn" onclick="openGame()">🎮 Main Game</button>
 </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="fade-up">
 <h2>About</h2>
-<div class="card">Saya developer magang yang membuat website premium untuk seru-seruan aja.</div>
+<div class="card">Saya developer yang membuat website modern & profesional.</div>
 </section>
 
 <!-- SERVICES -->
@@ -190,25 +282,15 @@ canvas{max-width:100%;}
 <!-- PARALLAX -->
 <section class="parallax">
 <h2>Website Anda = Branding Anda 🚀</h2>
-<p>Buat client percaya dalam 5 detik pertama</p>
 </section>
 
 <!-- PORTFOLIO -->
 <section id="projects" class="fade-up">
 <h2>Portfolio</h2>
 <div class="grid portfolio">
-<div class="card">
-<img src="https://picsum.photos/400/300?1">
-Website Wedding Premium
-</div>
-<div class="card">
-<img src="https://picsum.photos/400/300?2">
-Landing Page UMKM
-</div>
-<div class="card">
-<img src="https://picsum.photos/400/300?3">
-Portfolio Developer
-</div>
+<div class="card"><img src="https://picsum.photos/400/300?1">Project 1</div>
+<div class="card"><img src="https://picsum.photos/400/300?2">Project 2</div>
+<div class="card"><img src="https://picsum.photos/400/300?3">Project 3</div>
 </div>
 </section>
 
@@ -216,20 +298,18 @@ Portfolio Developer
 <section id="testimoni" class="fade-up">
 <h2>Testimoni</h2>
 <div class="grid">
-<div class="card testi">"Webnya keren banget!"<br><strong>- jamal</strong></div>
-<div class="card testi">"Client langsung percaya 🔥"<br><strong>- Budi</strong></div>
-<div class="card testi">"keren bro 🔥"<br><strong>- yanto</strong></div>
-<div class="card testi">"Design premium banget!"<br><strong>- basuki</strong></div>
+<div class="card testi">"Keren banget!"<br><strong>- Client</strong></div>
+<div class="card testi">"Profesional 🔥"<br><strong>- User</strong></div>
 </div>
 </section>
 
 <!-- GAMING -->
 <section id="gaming" class="fade-up">
-<h2>Game Saya</h2>
+<h2>Gaming</h2>
 <div class="grid">
-<div class="card">Roblox</div>
 <div class="card">Mobile Legends</div>
 <div class="card">PUBG</div>
+<div class="card" onclick="openRoblox()">Roblox</div>
 </div>
 </section>
 
@@ -237,67 +317,89 @@ Portfolio Developer
 <section id="pricing" class="fade-up">
 <h2>Pricing</h2>
 <div class="grid">
-<div class="card">Basic - Rp100K</div>
-<div class="card">Premium - Rp300K</div>
-<div class="card">Ultimate - Rp700K</div>
+<div class="card">Basic - 100K</div>
+<div class="card">Premium - 300K</div>
+<div class="card">Ultimate - 700K</div>
 </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="fade-up">
-<h2>Order</h2>
+<h2>Contact</h2>
 <div class="card">
-<form>
 <input type="text" placeholder="Nama"><br><br>
 <input type="email" placeholder="Email"><br><br>
 <button class="btn">Kirim</button>
-</form>
 </div>
 </section>
 
 <!-- GAME -->
 <div id="gamePopup">
 <div class="game-box">
-
 <span class="close" onclick="closeGame()">✖</span>
-
-<h2>Snake Game 🎮</h2>
+<h2>Snake Game</h2>
 <canvas id="snakeGame" width="300" height="300"></canvas>
 
-<div class="controls">
-<button onclick="setDir('UP')">⬆️</button>
 <div>
+<button onclick="setDir('UP')">⬆️</button><br>
 <button onclick="setDir('LEFT')">⬅️</button>
-<button onclick="setDir('RIGHT')">➡️</button>
-</div>
+<button onclick="setDir('RIGHT')">➡️</button><br>
 <button onclick="setDir('DOWN')">⬇️</button>
 </div>
 
 <button class="btn" onclick="startGame()">Start</button>
 <p>Score: <span id="score">0</span></p>
+</div>
+</div>
+
+<!-- ROBLOX POPUP -->
+<div id="robloxPopup">
+<div class="game-box">
+<span class="close" onclick="closeRoblox()">✖</span>
+
+<h2>🔥 Roblox Profile</h2>
+<img id="rbxAvatar" src="" style="width:120px;border-radius:50%;margin:10px 0;">
+<h3 id="rbxName">Loading...</h3>
+
+<p style="color:gold;">Mau mabar sama aku? 😎</p>
+
+<div class="card">
+<h4>🎮 Game Favorit</h4>
+<p>Brookhaven RP</p>
+<p>Blox Fruits</p>
+</div>
+
+<a href="https://www.roblox.com" target="_blank">
+<button class="btn">Join Roblox</button>
+</a>
 
 </div>
 </div>
 
 <script>
-// START
+
 function start(){
-document.getElementById("open").style.display="none";
+  const open = document.getElementById("open");
+  open.style.transition = "0.5s";
+  open.style.opacity = "0";
+
+  setTimeout(()=>{
+    open.style.display = "none";
+    document.body.style.overflow = "auto";
+    window.scrollTo(0,0);
+  },500);
 }
 
-// MENU
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("active");
 }
 
-// CLOSE MENU HP
 document.querySelectorAll(".nav-links a").forEach(link=>{
 link.addEventListener("click",()=>{
 document.getElementById("navLinks").classList.remove("active");
 });
 });
 
-// SCROLL ANIM
 const el=document.querySelectorAll(".fade-up");
 window.addEventListener("scroll",()=>{
 el.forEach(e=>{
@@ -305,11 +407,6 @@ if(e.getBoundingClientRect().top<window.innerHeight-100){
 e.classList.add("show");
 }
 });
-});
-
-// CURSOR
-document.addEventListener("mousemove",e=>{
-document.querySelector(".cursor").style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
 });
 
 // GAME
@@ -329,13 +426,6 @@ game=setInterval(update,120);
 }
 
 function setDir(d){dir=d;}
-
-document.addEventListener("keydown",e=>{
-if(e.key=="ArrowLeft")dir="LEFT";
-if(e.key=="ArrowRight")dir="RIGHT";
-if(e.key=="ArrowUp")dir="UP";
-if(e.key=="ArrowDown")dir="DOWN";
-});
 
 function update(){
 const ctx=document.getElementById("snakeGame").getContext("2d");
@@ -368,6 +458,41 @@ clearInterval(game);
 alert("Game Over 😢");
 }
 }
+
+// ROBLOX
+function openRoblox(){
+document.getElementById("robloxPopup").style.display="flex";
+loadRoblox();
+}
+
+function closeRoblox(){
+document.getElementById("robloxPopup").style.display="none";
+}
+
+// 🔥 GANTI USERNAME DISINI
+const username = "striangrho";
+
+async function loadRoblox(){
+try{
+let res = await fetch(`https://www.roblox.com/id/users/9089289010/profile`,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({usernames:[username]})
+});
+
+let data = await res.json();
+let userId = data.data[0].id;
+
+document.getElementById("rbxAvatar").src =
+`https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&width=420&height=420&format=png`;
+
+document.getElementById("rbxName").innerText = username;
+
+}catch(err){
+console.log("Error Roblox");
+}
+}
+
 </script>
 
 </body>
